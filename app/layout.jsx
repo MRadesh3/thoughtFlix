@@ -5,8 +5,11 @@ import Footer from "@components/Footer";
 import Provider from "@components/Provider";
 
 export const metadata = {
-  title: "Promptopia",
+  title: "ThoughtFlix",
   description: "Discover & Share AI Prompts",
+  icons: {
+    icon: ["/favicon.ico?v=4"],
+  },
 };
 
 const RootLayout = ({ children }) => {
