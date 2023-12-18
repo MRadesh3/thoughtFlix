@@ -10,7 +10,7 @@ import { Fragment } from "react";
 const Footer = () => {
   return (
     <Fragment>
-      <section className="grid grid-cols-2 gap-8 w-full border-t-2 py-10">
+      <section className="grid grid-cols-2 gap-8 w-full border-t-2 py-10 mt-10">
         <div className="max-lg:col-span-2">
           <Image
             src="/assets/images/thoughtflix.png"

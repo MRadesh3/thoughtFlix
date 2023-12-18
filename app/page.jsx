@@ -4,12 +4,12 @@ const Home = () => {
   return (
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">
-        ThoughtFlix <br className="max-md:hidden" />
+        ThoughtFlix <br />
         <span className="orange_gradient text-center">
           Unbox Your Daily Thoughts
         </span>
       </h1>
-      <p className="desc text-center">
+      <p className="desc text-center max-lg:text-justify">
         Welcome to ThoughtFlix, where profound wisdom meets cinematic flair.
         Immerse yourself in a world where quotes come to life, each thought
         unfolding like scenes in a movie. ThoughtFlix is not just a platform;

@@ -52,9 +52,17 @@ const MyProfile = () => {
         handleDelete={handleDelete}
       />
       {posts.length === 0 && (
-        <p className="font-inter text-xl font-bold mb-20">
-          No Posts... Create One
-        </p>
+        <div className="mb-20 flex flex-col justify-center items-center gap-7">
+          <p className="font-inter text-xl font-bold">No Posts... Create One</p>
+          <button
+            type="button"
+            onClick={() => router.push("/create-prompt")}
+            className="bg-[#ea590c] text-white rounded-full font-medium px-6 py-2"
+          >
+            {" "}
+            Create Post{" "}
+          </button>
+        </div>
       )}
     </>
   );

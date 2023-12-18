@@ -6,7 +6,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       <h1 className="head_text text_left">
         <span className="blue_gradient">{type} Post</span>
       </h1>
-      <p className="desc text-left max-w-md">
+      <p className="desc text-justify max-w-md">
         Welcome to the ThoughtFlix {type} Post page, where you have the power to
         refine and amplify your thoughts with ease. Craft your messages with
         precision and add that personal touch to your quotes. Our user-friendly

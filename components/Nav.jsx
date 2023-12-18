@@ -27,7 +27,7 @@ const Nav = () => {
           alt="logo"
           width={250}
           height={250}
-          className="object-contain"
+          className="object-contain max-md:w-[200px] max-md:h-auto"
         />
       </Link>
 
@@ -104,7 +104,7 @@ const Nav = () => {
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
                 >
-                  Create Prompt
+                  Create Post
                 </Link>
                 <button
                   type="button"
