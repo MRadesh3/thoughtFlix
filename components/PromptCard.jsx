@@ -57,10 +57,11 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             }
             width={12}
             height={12}
+            alt="copy"
           />
         </div>
       </div>
-      <p className="my-4 font-satoshi text-justify break-all hyphens-auto text-base max-md:text-sm text-gray-700">
+      <p className="my-4 font-satoshi text-justify hyphens-auto text-base max-md:text-sm text-gray-700">
         {post.prompt}
       </p>
       <p

@@ -53,7 +53,11 @@ const Feed = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`
+        `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`,
+        {
+          method: "GET",
+          body: JSON.stringify(),
+        }
       );
       const data = await response.json();
       console.log(data);
