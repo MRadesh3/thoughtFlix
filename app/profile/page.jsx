@@ -13,7 +13,9 @@ const MyProfile = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`/api/users/${session?.user.id}/posts`);
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/${session?.user.id}/posts`
+      );
       const data = await response.json();
 
       setPosts(data);
