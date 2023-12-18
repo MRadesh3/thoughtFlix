@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
+import axios from "axios";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -52,21 +53,23 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`,
-        {
-          method: "GET",
-          body: JSON.stringify(),
-        }
-      );
-      const data = await response.json();
-      console.log(data);
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`
+        );
 
-      setPosts(data);
+        console.log(response);
+
+        setPosts([...response.data]);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
     };
 
-    fetchPosts();
-  }, []);
+    if (posts.length === 0) {
+      fetchPosts();
+    }
+  }, [posts]);
 
   return (
     <section className="feed">
