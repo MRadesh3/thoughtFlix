@@ -14,8 +14,8 @@ const PromptCardList = ({ data, handleTagClick }) => {
   );
 };
 
-const Feed = () => {
-  const [posts, setPosts] = useState([]);
+const Feed = ({ posts }) => {
+  // const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState();
   const [searchedResults, setSearchedResults] = useState([]);
   const [searchTimeout, setSearchTimeout] = useState(null);
@@ -51,25 +51,22 @@ const Feed = () => {
     setSearchedResults(searchResult);
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`
-        );
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`
+  //       );
 
-        console.log(response);
+  //       console.log(response.data.prompts);
+  //       setPosts([...response.data.prompts]);
+  //     } catch (error) {
+  //       console.error("Error fetching posts:", error);
+  //     }
+  //   };
 
-        setPosts([...response.data]);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      }
-    };
-
-    if (posts.length === 0) {
-      fetchPosts();
-    }
-  }, [posts]);
+  //   fetchPosts();
+  // }, []);
 
   return (
     <section className="feed">
