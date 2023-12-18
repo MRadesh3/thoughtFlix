@@ -19,6 +19,8 @@ const Feed = () => {
   const [searchedResults, setSearchedResults] = useState([]);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
+  console.log(posts);
+
   const filterPrompts = (searchText) => {
     const regex = new RegExp(searchText, "i");
     return posts.filter(
@@ -50,19 +52,21 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch("/api/prompt");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`
+      );
       const data = await response.json();
+      console.log(data);
 
       setPosts(data);
     };
-    console.log(posts);
 
     fetchPosts();
   }, []);
 
   return (
     <section className="feed">
-      <form className="relative w-full flex-center">
+      <form className="relative w-full flex-center max-w-xl">
         <input
           type="text"
           placeholder="Search for a tag or username"
