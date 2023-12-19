@@ -21,15 +21,23 @@ const PromptCardList = ({ data, handleTagClick }) => {
 
 // Main Feed component
 const Feed = () => {
+  const [posts, setPosts] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [searchedResults, setSearchedResults] = useState([]);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
   // Use useSWR for data fetching
-  const { data: posts, isValidating } = useSWR(
+  const { data: fetchPosts, isValidating } = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`,
     fetcher
   );
+  console.log(posts);
+
+  useEffect(() => {
+    if (fetchPosts) {
+      setPosts(fetchPosts);
+    }
+  }, [fetchPosts]);
 
   // Filter prompts based on search text
   const filterPrompts = (searchText) => {
