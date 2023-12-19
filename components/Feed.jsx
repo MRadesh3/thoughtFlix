@@ -2,10 +2,6 @@
 
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
-import axios from "axios";
-
-export const revalidate = 1;
-export const dynamic = "force-dynamic";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -58,7 +54,11 @@ const Feed = () => {
     const fetchPosts = async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`,
-        { cache: "no-store" }
+        {
+          next: {
+            revalidate: 1,
+          },
+        }
       );
       const data = await response.json();
 
