@@ -8,17 +8,9 @@ export const GET = async (req, res) => {
       .sort({ createdAt: -1 })
       .populate("creator");
 
-    return new Response(
-      JSON.stringify(prompts),
-      {
-        status: 200,
-      },
-      {
-        headers: {
-          "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0",
-        },
-      }
-    );
+    return new Response(JSON.stringify(prompts), {
+      status: 200,
+    });
   } catch (error) {
     return new Response("Failed to load the prompts", { status: 500 });
   }
