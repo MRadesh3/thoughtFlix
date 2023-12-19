@@ -1,29 +1,6 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Feed from "@components/Feed";
-import axios from "axios";
 
 const Home = () => {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`
-        );
-
-        console.log(response.data.prompts);
-        setPosts([...response.data.prompts]);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
   return (
     <section className="w-full flex-center flex-col">
       <h1 className="head_text text-center">
@@ -44,7 +21,7 @@ const Home = () => {
         inspiration. Welcome to ThoughtFlix – where ideas sparkle, and thoughts
         shine in the spotlight.
       </p>
-      <Feed posts={posts} />
+      <Feed />
     </section>
   );
 };

@@ -1,9 +1,14 @@
 "use client";
 
+// Import necessary modules
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
-import axios from "axios";
+import useSWR from "swr";
 
+// Fetcher function to be used with useSWR
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+// Component for displaying a list of prompt cards
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className="mt-16 prompt_layout">
@@ -14,14 +19,19 @@ const PromptCardList = ({ data, handleTagClick }) => {
   );
 };
 
-const Feed = ({ posts }) => {
-  // const [posts, setPosts] = useState([]);
-  const [searchText, setSearchText] = useState();
+// Main Feed component
+const Feed = () => {
+  const [searchText, setSearchText] = useState("");
   const [searchedResults, setSearchedResults] = useState([]);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
-  console.log(posts);
+  // Use useSWR for data fetching
+  const { data: posts, isValidating } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`,
+    fetcher
+  );
 
+  // Filter prompts based on search text
   const filterPrompts = (searchText) => {
     const regex = new RegExp(searchText, "i");
     return posts.filter(
@@ -32,41 +42,31 @@ const Feed = ({ posts }) => {
     );
   };
 
+  // Handle search input change
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
-    setSearchText(e.target.value);
+    const value = e.target.value;
+    setSearchText(value);
 
     setSearchTimeout(
       setTimeout(() => {
-        const searchResults = filterPrompts(e.target.value);
+        const searchResults = filterPrompts(value);
         setSearchedResults(searchResults);
       }, 500)
     );
   };
 
+  // Handle tag click
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
-
     const searchResult = filterPrompts(tagName);
     setSearchedResults(searchResult);
   };
 
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`
-  //       );
-
-  //       console.log(response.data.prompts);
-  //       setPosts([...response.data.prompts]);
-  //     } catch (error) {
-  //       console.error("Error fetching posts:", error);
-  //     }
-  //   };
-
-  //   fetchPosts();
-  // }, []);
+  // Display loading state while data is being fetched
+  if (!posts && isValidating) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section className="feed">
@@ -81,6 +81,7 @@ const Feed = ({ posts }) => {
         />
       </form>
 
+      {/* Display search results if there's a search query, otherwise display all posts */}
       {searchText ? (
         <PromptCardList
           data={searchedResults}

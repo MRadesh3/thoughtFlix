@@ -1,14 +1,25 @@
 import { connectToDB } from "@utils/database";
 import Prompt from "@models/prompt";
-import { NextResponse } from "next/server";
 
 export const GET = async (req, res) => {
   try {
     await connectToDB();
-    const prompts = await Prompt.find({}).populate("creator");
+    const prompts = await Prompt.find()
+      .sort({ createdAt: -1 })
+      .populate("creator");
 
-    return NextResponse.json({ prompts }, { status: 200 });
+    return new Response(
+      JSON.stringify(prompts),
+      {
+        status: 200,
+      },
+      {
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate, max-age=0",
+        },
+      }
+    );
   } catch (error) {
-    return NextResponse.json("Failed to load prompts", { status: 500 });
+    return new Response("Failed to load the prompts", { status: 500 });
   }
 };
