@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
 import axios from "axios";
 
+export const revalidate = 1;
+export const dynamic = "force-dynamic";
+
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className="mt-16 prompt_layout">
@@ -90,5 +93,3 @@ const Feed = () => {
 };
 
 export default Feed;
-
-// export const revalidate = 1;
