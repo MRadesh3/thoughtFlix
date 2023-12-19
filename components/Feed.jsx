@@ -1,14 +1,9 @@
 "use client";
 
-// Import necessary modules
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
-import useSWR from "swr";
+import axios from "axios";
 
-// Fetcher function to be used with useSWR
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
-// Component for displaying a list of prompt cards
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className="mt-16 prompt_layout">
@@ -19,31 +14,14 @@ const PromptCardList = ({ data, handleTagClick }) => {
   );
 };
 
-// Main Feed component
 const Feed = () => {
   const [posts, setPosts] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState();
   const [searchedResults, setSearchedResults] = useState([]);
   const [searchTimeout, setSearchTimeout] = useState(null);
 
-  // Use useSWR for data fetching
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`,
-        {
-          cache: "no-store",
-        }
-      );
-      const data = await response.json();
+  console.log(posts);
 
-      setPosts(data);
-    };
-
-    fetchPosts();
-  }, []);
-
-  // Filter prompts based on search text
   const filterPrompts = (searchText) => {
     const regex = new RegExp(searchText, "i");
     return posts.filter(
@@ -54,31 +32,37 @@ const Feed = () => {
     );
   };
 
-  // Handle search input change
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
-    const value = e.target.value;
-    setSearchText(value);
+    setSearchText(e.target.value);
 
     setSearchTimeout(
       setTimeout(() => {
-        const searchResults = filterPrompts(value);
+        const searchResults = filterPrompts(e.target.value);
         setSearchedResults(searchResults);
       }, 500)
     );
   };
 
-  // Handle tag click
   const handleTagClick = (tagName) => {
     setSearchText(tagName);
+
     const searchResult = filterPrompts(tagName);
     setSearchedResults(searchResult);
   };
 
-  // // Display loading state while data is being fetched
-  // if (!posts && isValidating) {
-  //   return <p>Loading...</p>;
-  // }
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`,
+        { cache: "no-store" }
+      );
+      const data = await response.json();
+
+      setPosts(data);
+    };
+    fetchPosts();
+  }, []);
 
   return (
     <section className="feed">
@@ -93,7 +77,6 @@ const Feed = () => {
         />
       </form>
 
-      {/* Display search results if there's a search query, otherwise display all posts */}
       {searchText ? (
         <PromptCardList
           data={searchedResults}
@@ -107,3 +90,5 @@ const Feed = () => {
 };
 
 export default Feed;
+
+// export const revalidate = 1;
