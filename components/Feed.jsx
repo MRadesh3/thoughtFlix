@@ -27,17 +27,21 @@ const Feed = () => {
   const [searchTimeout, setSearchTimeout] = useState(null);
 
   // Use useSWR for data fetching
-  const { data: fetchPosts, isValidating } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`,
-    fetcher
-  );
-  console.log(posts);
-
   useEffect(() => {
-    if (fetchPosts) {
-      setPosts(fetchPosts);
-    }
-  }, [fetchPosts]);
+    const fetchPosts = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`,
+        {
+          cache: "no-cache",
+        }
+      );
+      const data = await response.json();
+
+      setPosts(data);
+    };
+
+    fetchPosts();
+  }, []);
 
   // Filter prompts based on search text
   const filterPrompts = (searchText) => {
@@ -71,10 +75,10 @@ const Feed = () => {
     setSearchedResults(searchResult);
   };
 
-  // Display loading state while data is being fetched
-  if (!posts && isValidating) {
-    return <p>Loading...</p>;
-  }
+  // // Display loading state while data is being fetched
+  // if (!posts && isValidating) {
+  //   return <p>Loading...</p>;
+  // }
 
   return (
     <section className="feed">
