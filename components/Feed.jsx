@@ -54,11 +54,7 @@ const Feed = () => {
     const fetchPosts = async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/prompt`,
-        {
-          next: {
-            revalidate: 1,
-          },
-        }
+        { cache: "no-store" }
       );
       const data = await response.json();
 

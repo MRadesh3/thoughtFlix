@@ -1,6 +1,9 @@
 import { connectToDB } from "@utils/database";
 import Prompt from "@models/prompt";
-import { revalidatePath } from "next/cache";
+
+export const dynamic = "force-dynamic";
+export const revalidate = true;
+export const fetchCache = "force-no-store";
 
 export const GET = async (req, res) => {
   try {
@@ -8,10 +11,6 @@ export const GET = async (req, res) => {
     const prompts = await Prompt.find()
       .sort({ createdAt: -1 })
       .populate("creator");
-
-    const path = req.nextUrl.pathname;
-    console.log(path);
-    revalidatePath(path);
 
     return new Response(JSON.stringify(prompts), {
       status: 200,
