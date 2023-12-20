@@ -8,7 +8,7 @@ export async function middleware(NextRequest) {
     path === "/profile";
 
   const token =
-    NextRequest.cookies.get("next-auth.session-token")?.value || null;
+    NextRequest.cookies.get("__Secure-next-auth.session-token")?.value || null;
 
   if (isProtected && !token) {
     return NextResponse.redirect(new URL("/", NextRequest.nextUrl));
