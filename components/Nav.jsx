@@ -32,12 +32,18 @@ const Nav = () => {
       </Link>
 
       {/* Desktop Navigation */}
-      <div className="sm:flex hidden">
+      <div className="lg:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-7 justify-center items-center">
             <Link
+              href="/posts"
+              className="text-base shadow-lg px-6 py-2 rounded-full border border-[#ea590c] font-medium text-[#ea590c]"
+            >
+              Posts
+            </Link>
+            <Link
               href="/create-prompt"
-              className="bg-[#ea590c] text-white rounded-full font-medium px-6 py-2"
+              className="bg-[#ea590c] text-white shadow-lg rounded-full font-medium px-6 py-2"
             >
               Create Post
             </Link>
@@ -45,7 +51,7 @@ const Nav = () => {
             <button
               type="button"
               onClick={signOut}
-              className="border border-[#ea590c] text-[#ea590c] rounded-full font-medium px-6 py-2 hover:bg-[#ea590c] hover:text-white transition duration-300 ease-in-out"
+              className="border border-[#ea590c] text-[#ea590c] shadow-lg rounded-full font-medium px-6 py-2 hover:bg-[#ea590c] hover:text-white transition duration-300 ease-in-out"
             >
               Sign Out
             </button>
@@ -64,23 +70,36 @@ const Nav = () => {
           <>
             {providers &&
               Object.values(providers).map((provider) => (
-                <button
-                  type="button"
-                  key={provider.name}
-                  onClick={() => signIn(provider.id)}
-                  className="bg-[#ea590c] text-white rounded-full font-medium px-6 py-2"
-                >
-                  Sign In
-                </button>
+                <div className="flex justify-center items-center gap-10">
+                  <Link
+                    href="/posts"
+                    className="text-base shadow-lg px-6 py-2 rounded-full border border-[#ea590c] font-medium text-[#ea590c]"
+                  >
+                    Posts
+                  </Link>
+                  <button
+                    type="button"
+                    key={provider.name}
+                    onClick={() => signIn(provider.id)}
+                    className="bg-[#ea590c] text-white rounded-full font-medium px-6 py-2"
+                  >
+                    Sign In
+                  </button>
+                </div>
               ))}
           </>
         )}
       </div>
 
       {/* Mobile Navigation */}
-      <div className="sm:hidden flex relative">
+      <div className="lg:hidden flex relative">
         {session?.user ? (
-          <div className="flex">
+          <div className="flex justify-center items-center gap-10">
+            <Link href="/posts">
+              <p className="max-sm:hidden border border-[#ea590c] text-[#ea590c] rounded-full font-medium px-6 py-2 hover:bg-[#ea590c] hover:text-white transition duration-300 ease-in-out">
+                Posts
+              </p>
+            </Link>
             <Image
               src={session?.user.image}
               width={50}
@@ -98,6 +117,13 @@ const Nav = () => {
                   onClick={() => setToggleDropdown(false)}
                 >
                   My Profile
+                </Link>
+                <Link
+                  href="/posts"
+                  className="dropdown_link"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  All Posts
                 </Link>
                 <Link
                   href="/create-prompt"

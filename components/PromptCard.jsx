@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
+import { dateIN } from "@functions";
 
 const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const [copied, setCopied] = useState("");
@@ -64,12 +65,18 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       <p className="my-4 font-satoshi text-justify hyphens-auto text-base max-md:text-sm text-gray-700">
         {post.prompt}
       </p>
-      <p
-        className="text-sm font-inter blue_gradient cursor-pointer"
-        onClick={() => handleTagClick && handleTagClick(post.tag)}
-      >
-        {post.tag}
-      </p>
+      <div className="flex justify-between items-center">
+        <p
+          className="text-sm font-inter blue_gradient cursor-pointer"
+          onClick={() => handleTagClick && handleTagClick(post.tag)}
+        >
+          {post.tag}
+        </p>
+        <p className="text-sm font-inter text-slate-500">
+          {dateIN(post.createdAt)}
+        </p>
+      </div>
+
       {session?.user.id === post.creator._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t pt-3 border-gray-100">
           <p

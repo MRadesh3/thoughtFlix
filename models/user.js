@@ -17,6 +17,14 @@ const UserSchema = new Schema({
   image: {
     type: String,
   },
+  role: {
+    type: String,
+    default: "User",
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const User = models.User || model("User", UserSchema);

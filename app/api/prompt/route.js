@@ -8,9 +8,7 @@ export const fetchCache = "force-no-store";
 export const GET = async (req, res) => {
   try {
     await connectToDB();
-    const prompts = await Prompt.find()
-      .sort({ createdAt: -1 })
-      .populate("creator");
+    const prompts = await Prompt.find().limit(10).populate("creator");
 
     return new Response(JSON.stringify(prompts), {
       status: 200,
