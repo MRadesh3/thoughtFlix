@@ -6,7 +6,8 @@ import Provider from "@components/Provider";
 
 export const metadata = {
   title: "ThoughtFlix",
-  description: "Discover & Share AI Prompts",
+  description:
+    "ThoughtFlix : A platform designed to amplify the voices of brilliant minds, fostering a community where thoughts are shared, celebrated, and explored",
   icons: {
     icon: ["/favicon.ico?v=4"],
   },

@@ -15,12 +15,12 @@ const VideoPlayer = () => {
             width={200}
             height={200}
             alt={image.alt}
-            className="object-cover w-full h-[405px] shadow-2xl max-md:col-span-4 max-lg:col-span-2"
+            className="object-cover w-full h-[410px] max-md:h-[500px] shadow-2xl max-md:col-span-4 max-lg:col-span-2"
           ></Image>
         ))}
       </div>
-      <section className="flex max-lg:flex-col gap-10 max-lg:gap-10 mt-20 max-md:mt-10">
-        <div>
+      <div className="flex max-lg:flex-col gap-10 max-lg:gap-10 mt-20 max-md:mt-10">
+        <span>
           <video
             src="/assets/videos/Motivational_Video.mp4"
             controls
@@ -29,8 +29,8 @@ const VideoPlayer = () => {
             muted
             style={{ height: "auto", width: "100%" }}
           ></video>
-        </div>
-        <div>
+        </span>
+        <span>
           <video
             src="/assets/videos/Motivational_Video_2.mp4"
             muted
@@ -39,8 +39,8 @@ const VideoPlayer = () => {
             controls
             style={{ height: "auto", width: "100%" }}
           ></video>
-        </div>
-      </section>
+        </span>
+      </div>
     </Fragment>
   );
 };
