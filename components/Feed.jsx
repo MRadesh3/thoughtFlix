@@ -9,16 +9,6 @@ import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const PromptCardList = ({ data, handleTagClick }) => {
-  return (
-    <div className="mt-16 prompt_layout">
-      {data.map((post, index) => (
-        <PromptCard key={index} post={post} handleTagClick={handleTagClick} />
-      ))}
-    </div>
-  );
-};
-
 const Feed = () => {
   const { data: session } = useSession();
   const [searchText, setSearchText] = useState();
@@ -122,3 +112,13 @@ const Feed = () => {
 };
 
 export default Feed;
+
+const PromptCardList = ({ data, handleTagClick }) => {
+  return (
+    <div className="mt-16 prompt_layout">
+      {data.map((post, index) => (
+        <PromptCard key={index} post={post} handleTagClick={handleTagClick} />
+      ))}
+    </div>
+  );
+};
