@@ -65,7 +65,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       <p className="my-4 font-satoshi text-justify hyphens-auto text-base max-md:text-sm text-gray-700">
         {post.prompt}
       </p>
-      <div className="flex justify-between items-center">
+      <div className="flex max-md:flex-col gap-4 justify-between items-center">
         <p
           className="text-sm font-inter blue_gradient cursor-pointer"
           onClick={() => handleTagClick && handleTagClick(post.tag)}
