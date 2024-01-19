@@ -70,7 +70,10 @@ const Nav = () => {
           <>
             {providers &&
               Object.values(providers).map((provider) => (
-                <div className="flex justify-center items-center gap-10">
+                <div
+                  key={provider.id}
+                  className="flex justify-center items-center gap-10"
+                >
                   <Link
                     href="/posts"
                     className="text-base shadow-lg px-6 py-2 rounded-full border border-[#ea590c] font-medium text-[#ea590c]"

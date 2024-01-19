@@ -15,7 +15,7 @@ Welcome to ThoughtFlix, where profound wisdom meets cinematic flair. Immerse you
 
 The thoughtFlix demo can be [viewed online here](https://thoughtflix.vercel.app/)
 
-Here are screenshots that show the E-commerce demo application in use.
+Here are screenshots that show the thoughtFlix demo application in use.
 
 #### Home Page
 
