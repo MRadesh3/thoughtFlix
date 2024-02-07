@@ -27,7 +27,7 @@ Here are screenshots that show the thoughtFlix demo application in use.
 
 ## Getting Started
 
-To get started you can simply clone this `ThoughtFlix` repository and install the dependencies.
+You can clone this `ThoughtFlix` repository and install the dependencies to get started.
 
 - Clone the `ThoughtFlix` repository using git :
 
@@ -71,21 +71,21 @@ To get started you can simply clone this `ThoughtFlix` repository and install th
 
 ## 🚀 About Me
 
-Hello visitors , I'm a skilled web developer passionate about crafting user-centric and visually appealing websites. Proficient in JavaScript, Next.js, React.js, Node.js, MongoDB, HTML, and CSS, I bring ideas to life through clean and efficient code.
+Hello visitors, I'm a skilled web developer passionate about crafting user-centric and visually appealing websites. Proficient in JavaScript, Next.js, React.js, Node.js, MongoDB, HTML, and CSS, I bring ideas to life through clean and efficient code.
 
 ### My Projects
 
 - **[ShopingGo ](https://shopinggo.vercel.app/)** : ( Role : Developer ) ShopingGo is an online e-commerce platform that provides a seamless and convenient shopping experience for users. With a user-friendly interface and a wide range of products, ShopingGo aims to be your go-to destination for all your shopping needs.
 
-- **[DBATU - Student Drive ](https://mradesh3.github.io/DBATU-Student-Drive/)** : ( Role : Developer ) Welcome to DBATU - Student Drive, where we provide the data to students like projects PPTs, word files and many more.
+- **[React - Admin Dashboard ](https://reactadmindashboard-seven.vercel.app/)** : ( Role : Developer ) A React admin dashboard is a dynamic web application interface designed for efficiently managing and visualizing data within an organization.
 
-- **[Technical Trip](https://mradesh3.github.io/DBATU-Student-Drive/)** : ( Role : Developer ) Welcome to Technical Trip, where we introduce our users to the beneficial tools that they equired in their technical trip.
+- **[DBATU - Student Drive ](https://dbatustudentdrive.vercel.app/)** : ( Role : Developer ) Welcome to DBATU - Student Drive, where we provide the data to students like projects PPTs, word files and many more.
 
 Feel free to explore my [GitHub profile](https://github.com/MRadesh3) for more examples of my work.
 
 ### 🔗 Get In Touch
 
-[![Portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://katherineoelsner.com/)
+[![Portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://adeshsalsundar.online/)
 
 [![Linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adesh-salsundar-a73b4121a/)
 
@@ -97,4 +97,4 @@ Let's build something amazing together !
 
 ## Feedback
 
-If you have any feedback, please reach out to us at adeshsalsundar1713@gmail.com
+If you have any feedback, please reach out to me at adeshsalsundar1713@gmail.com
