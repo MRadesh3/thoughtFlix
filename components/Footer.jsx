@@ -57,7 +57,7 @@ const Footer = () => {
                 </span>
 
                 <span className="font-normal">
-                  <Link href="https://www.linkedin.com/in/adesh-salsundar-a73b4121a/">
+                  <Link href="https://adeshsalsundar.online/">
                     <AccountCircleIcon fontSize="large" />{" "}
                   </Link>
                 </span>
